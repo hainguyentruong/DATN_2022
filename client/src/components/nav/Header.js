@@ -7,8 +7,8 @@ import {
   UserAddOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
-import {Link} from 'react-router-dom';
-import firebase from 'firebase';
+import { Link } from "react-router-dom";
+import firebase from "firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -18,7 +18,7 @@ const Header = () => {
   const [current, setCurrent] = useState("home");
 
   let dispatch = useDispatch();
-  let { user } = useSelector((state) => ({...state}));
+  let { user } = useSelector((state) => ({ ...state }));
 
   let history = useHistory();
 
@@ -34,7 +34,7 @@ const Header = () => {
       payload: null,
     });
     history.push("/login");
-  }
+  };
 
   return (
     <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
@@ -48,19 +48,33 @@ const Header = () => {
         </Item>
       )}
 
-
       {!user && (
         <Item key="login" icon={<UserOutlined />} className="float-right">
           <Link to="/login">Login</Link>
         </Item>
       )}
 
-
       {user && (
-        <SubMenu icon={<SettingOutlined />} title={user.email && user.email.split("@")[0]} className="float-right">
-          <Item key="setting:1">Option 1</Item>
-          <Item key="setting:2">Option 2</Item>
-          <Item icon={<LogoutOutlined />} onClick={logout}>Logout</Item>
+        <SubMenu
+          icon={<SettingOutlined />}
+          title={user.email && user.email.split("@")[0]}
+          className="float-right"
+        >
+          {user && user.role === "subscriber" && (
+            <Item>
+              <Link to="/user/history">Dashboard</Link>
+            </Item>
+          )}
+
+          {user && user.role === "admin" && (
+            <Item>
+              <Link to="/admin/dashboard">Dashboard</Link>
+            </Item>
+          )}
+
+          <Item icon={<LogoutOutlined />} onClick={logout}>
+            Logout
+          </Item>
         </SubMenu>
       )}
     </Menu>
