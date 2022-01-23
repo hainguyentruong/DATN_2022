@@ -27,7 +27,7 @@ const initialState = {
     //   public_id: "j7uerlvhog1eic0oyize",
     //   url:
     //     "https://res.cloudinary.com/dcqjrwaoi/image/upload/v1599480912/j7uerlvhog1eic0oyize.jpg",
-    // },
+    // }, 
     // {
     //   public_id: "ho6wnp7sugyemnmtoogf",
     //   url:
