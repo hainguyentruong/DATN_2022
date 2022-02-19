@@ -97,7 +97,7 @@ const ProductUpdate = ({ match, history }) => {
     setValues({ ...values, subs: [] });
 
     setSelectedCategory(e.target.value);
-
+    
     getCategorySubs(e.target.value).then((res) => {
       console.log("SUB OPTIONS ON CATGORY CLICK", res);
       setSubOptions(res.data);
