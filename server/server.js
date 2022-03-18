@@ -11,7 +11,7 @@ const app = express();
 
 // db
 mongoose
-  .connect(process.env.DATABASE, {
+  .connect('mongodb+srv://ecommerce:15101999@ecommerce.xhlaa.mongodb.net/Ecommerce?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
@@ -29,6 +29,6 @@ app.use(cors());
 readdirSync("./routes").map((r) => app.use("/api", require("./routes/" + r)));
 
 // port
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));

@@ -3,7 +3,7 @@ const Cart = require("../models/cart");
 const Product = require("../models/product");
 const Coupon = require("../models/coupon");
 const coupon = require("../models/coupon");
-const stripe = require("stripe")(process.env.STRIPE_SECRET);
+const stripe = require("stripe")('sk_test_51KUsKNINlqcv2Cof3TbIyk3oP1dG4gudi058b2mLoPJb9FZyLw205TCCfb094qO0XLOVNw2nQjC9PgRlTU4xYLsI00lC64MU0Y');
 
 exports.createPaymentIntent = async (req, res) => {
   // console.log(req.body);
